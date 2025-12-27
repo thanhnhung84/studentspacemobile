@@ -622,7 +622,6 @@
                   <span class="answer">${item.word}</span>
                 `;
             
-                card.addEventListener("click", ()=>checkMatch(card));
                 card.addEventListener("pointerup", ()=>checkMatch(card));
             
                 imageList.appendChild(card);
@@ -643,32 +642,33 @@
                 wordList.appendChild(word);
               });
             }
-            
             /* ===== CHECK ===== */
             function checkMatch(card){
               if(!selectedWord) return;
               if(card.classList.contains("correct")) return;
             
-              const correct = card.dataset.answer === selectedWord.textContent;
+              const word = selectedWord;   // 🔒 lưu lại
+              selectedWord = null;         // 🔒 reset sớm tránh double fire
             
-              card.classList.remove("correct","wrong");
-              selectedWord.classList.remove("wrong","active");
+              const correct = card.dataset.answer === word.textContent;
+            
+              card.classList.remove("wrong");
+              word.classList.remove("wrong","active");
             
               if(correct){
                 playSound(soundCorrect);
                 card.classList.add("correct");
-                selectedWord.classList.add("matched");
+                word.classList.add("matched");
               }else{
                 playSound(soundWrong);
                 card.classList.add("wrong");
-                selectedWord.classList.add("wrong");
+                word.classList.add("wrong");
+            
                 setTimeout(()=>{
                   card.classList.remove("wrong");
-                  selectedWord.classList.remove("wrong");
+                  word.classList.remove("wrong");
                 },600);
               }
-            
-              selectedWord = null;
             }
             
             /* ===== RESET ===== */
@@ -717,6 +717,7 @@
     </div>
     </footer>
 </html>
+
 
 
 
