@@ -670,6 +670,13 @@
                 draggedWord.classList.add("matched");
                 draggedWord.draggable = false;
                 card.textContent = draggedWord.textContent;
+                // HIỂN THỊ CHỮ TRONG CARD (KHÔNG DI CHUYỂN NODE)
+                card.innerHTML = `
+                  <div style="font-weight:700;color:#166534">
+                    ${draggedWord.textContent}
+                  </div>
+                `;
+                  
               }else{
                 playSound(soundWrong);
                 draggedWord.classList.add("wrong");
@@ -726,6 +733,7 @@
     </div>
     </footer>
 </html>
+
 
 
 
