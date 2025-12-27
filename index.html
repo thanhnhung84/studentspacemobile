@@ -175,7 +175,7 @@
             border-radius: 6px;
           }
 
-            container{
+            .container{
                 max-width:1500px;
                 height: 100%;
                 margin:auto;
@@ -669,7 +669,7 @@
                 playSound(soundCorrect);
                 draggedWord.classList.add("matched");
                 draggedWord.draggable = false;
-                card.appendChild(draggedWord);
+                card.textContent = draggedWord.textContent;
               }else{
                 playSound(soundWrong);
                 draggedWord.classList.add("wrong");
@@ -726,6 +726,7 @@
     </div>
     </footer>
 </html>
+
 
 
 
