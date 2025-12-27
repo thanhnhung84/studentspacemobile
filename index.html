@@ -476,6 +476,38 @@
         
         .match-card.correct span.answer{display:block;}
         .match-card span.answer{display:none;}
+
+        /* ===== FIREWORK INSIDE GAME CONTAINER ===== */
+        .container{
+          position: relative; /* QUAN TRỌNG */
+        }
+        
+        .game-firework{
+          position:absolute;
+          inset:0;
+          pointer-events:none; /* không chặn click */
+          overflow:hidden;
+          z-index:20;
+        }
+        
+        .game-firework span{
+          position:absolute;
+          width:12px;
+          height:12px;
+          border-radius:50%;
+          animation: boom 1.6s ease-out forwards;
+        }
+        
+        @keyframes boom{
+          0%{
+            transform:scale(0);
+            opacity:1;
+          }
+          100%{
+            transform:scale(18) translate(var(--x),var(--y));
+            opacity:0;
+          }
+        }
         </style>
     </head>
     <body>
@@ -553,6 +585,7 @@
         <!-- Sounds -->
         <audio id="soundCorrect" src="correctsound.mp3" preload="auto"></audio>
         <audio id="soundWrong" src="error sound.mp3" preload="auto"></audio>
+        <audio id="soundFinish" src="finish.mp3" preload="auto"></audio>
 
         <script>
             /* ===== DATA ===== */
@@ -606,7 +639,32 @@
               audio.currentTime = 0;
               audio.play();
             }
+            const soundFinish = document.getElementById("soundFinish");
+
+            function showFinishFirework(){
+              const gameBox = document.querySelector(".container");
+              if(!gameBox) return;
             
+              const wrap = document.createElement("div");
+              wrap.className = "game-firework";
+            
+              for(let i=0;i<28;i++){
+                const p = document.createElement("span");
+                p.style.background = `hsl(${Math.random()*360},90%,60%)`;
+                p.style.left = "50%";
+                p.style.top = "60%";
+                p.style.setProperty("--x",(Math.random()*2-1)*220+"px");
+                p.style.setProperty("--y",(Math.random()*2-1)*220+"px");
+                wrap.appendChild(p);
+              }
+            
+              gameBox.appendChild(wrap);
+            
+              soundFinish.currentTime = 0;
+              soundFinish.play();
+            
+              setTimeout(()=>wrap.remove(),1700);
+            }
             /* ===== RENDER ===== */
             function renderGame(){
               imageList.innerHTML = "";
@@ -659,6 +717,7 @@
                 playSound(soundCorrect);
                 card.classList.add("correct");
                 word.classList.add("matched");
+                checkComplete(); // 🎆 hoàn thành thì bắn pháo hoa
               }else{
                 playSound(soundWrong);
                 card.classList.add("wrong");
@@ -670,10 +729,19 @@
                 },600);
               }
             }
-            
+            function checkComplete(){
+              const done = document.querySelectorAll(".word.matched").length;
+              if(done === MATCH_DATA.length){
+                setTimeout(showFinishFirework,300);
+              }
+            }
+            function clearFirework(){
+              document.querySelectorAll(".game-firework").forEach(fw => fw.remove());
+            }
             /* ===== RESET ===== */
             function resetGame(){
-              renderGame();
+              clearFirework();   // ❌ dọn pháo hoa ngay
+              renderGame();      // 🔁 chơi lại
             }
             
             renderGame();
@@ -717,6 +785,7 @@
     </div>
     </footer>
 </html>
+
 
 
 
