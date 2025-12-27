@@ -466,7 +466,16 @@
               body{
             -webkit-tap-highlight-color: transparent;
           }
+
+            .match-card span.answer{
+          margin-top:6px;
+          font-weight:700;
+          color:#166534;
+          font-size:1rem;
+        }
         
+        .match-card.correct span.answer{display:block;}
+        .match-card span.answer{display:none;}
         </style>
     </head>
     <body>
@@ -584,17 +593,15 @@
 
             const imageList = document.getElementById("imageList");
             const wordList = document.getElementById("wordList");
-
             const soundCorrect = document.getElementById("soundCorrect");
             const soundWrong = document.getElementById("soundWrong");
-
-            let draggedWord = null;
+            
+            let selectedWord = null;
             
             /* ===== UTILS ===== */
             function shuffle(arr){
               return arr.sort(() => Math.random() - 0.5);
             }
-            
             function playSound(audio){
               audio.currentTime = 0;
               audio.play();
@@ -604,12 +611,20 @@
             function renderGame(){
               imageList.innerHTML = "";
               wordList.innerHTML = "";
+              selectedWord = null;
             
               shuffle([...MATCH_DATA]).forEach(item=>{
                 const card = document.createElement("div");
                 card.className = "match-card";
                 card.dataset.answer = item.word;
-                card.innerHTML = `<img src="${item.image}">`;
+                card.innerHTML = `
+                  <img src="${item.image}">
+                  <span class="answer">${item.word}</span>
+                `;
+            
+                card.addEventListener("click", ()=>checkMatch(card));
+                card.addEventListener("pointerup", ()=>checkMatch(card));
+            
                 imageList.appendChild(card);
               });
             
@@ -617,82 +632,51 @@
                 const word = document.createElement("div");
                 word.className = "word";
                 word.textContent = item.word;
-                word.draggable = true;
             
-                /* click / tap */
                 word.addEventListener("click", ()=>{
+                  if(word.classList.contains("matched")) return;
                   document.querySelectorAll(".word").forEach(w=>w.classList.remove("active"));
-                  draggedWord = word;
-                  word.classList.add("active");
-                });
-            
-                /* PC drag */
-                word.addEventListener("dragstart", ()=>{
-                  draggedWord = word;
-                  document.querySelectorAll(".word").forEach(w=>w.classList.remove("active"));
-                  word.classList.add("active","dragging");
-                });
-            
-                word.addEventListener("dragend", ()=>{
-                  word.classList.remove("dragging");
-                });
-            
-                /* Mobile */
-                word.addEventListener("pointerdown", ()=>{
-                  draggedWord = word;
-                  document.querySelectorAll(".word").forEach(w=>w.classList.remove("active"));
+                  selectedWord = word;
                   word.classList.add("active");
                 });
             
                 wordList.appendChild(word);
               });
-            
-              document.querySelectorAll(".match-card").forEach(card=>{
-                card.addEventListener("dragover", e=>e.preventDefault());
-                card.addEventListener("drop", ()=>checkMatch(card));
-                card.addEventListener("pointerup", ()=>checkMatch(card));
-              });
             }
             
             /* ===== CHECK ===== */
             function checkMatch(card){
-              if(!draggedWord) return;
+              if(!selectedWord) return;
+              if(card.classList.contains("correct")) return;
             
-              const correct = card.dataset.answer === draggedWord.textContent;
+              const correct = card.dataset.answer === selectedWord.textContent;
             
               card.classList.remove("correct","wrong");
-              card.classList.add(correct ? "correct" : "wrong");
-            
-              draggedWord.classList.remove("active","wrong");
+              selectedWord.classList.remove("wrong","active");
             
               if(correct){
                 playSound(soundCorrect);
-                draggedWord.classList.add("matched");
-                draggedWord.draggable = false;
-                card.textContent = draggedWord.textContent;
-                // HIỂN THỊ CHỮ TRONG CARD (KHÔNG DI CHUYỂN NODE)
-                card.innerHTML = `
-                  <div style="font-weight:700;color:#166534">
-                    ${draggedWord.textContent}
-                  </div>
-                `;
-                  
+                card.classList.add("correct");
+                selectedWord.classList.add("matched");
               }else{
                 playSound(soundWrong);
-                draggedWord.classList.add("wrong");
+                card.classList.add("wrong");
+                selectedWord.classList.add("wrong");
                 setTimeout(()=>{
-                  draggedWord.classList.remove("wrong","active");
+                  card.classList.remove("wrong");
+                  selectedWord.classList.remove("wrong");
                 },600);
               }
             
-              draggedWord = null;}
+              selectedWord = null;
+            }
             
             /* ===== RESET ===== */
             function resetGame(){
               renderGame();
             }
-              renderGame();
-
+            
+            renderGame();
             const hamburger = document.querySelector('.hamburger');
             const navLinks = document.querySelector('.nav-links');
             const serviceLink = document.querySelector('.services > a');
@@ -733,6 +717,7 @@
     </div>
     </footer>
 </html>
+
 
 
 
