@@ -175,6 +175,52 @@
             border-radius: 6px;
             }
 
+            .vocab-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 300px);
+                grid-auto-rows: auto;
+                gap: 2px 50px;
+                justify-content: center;
+                margin: 40px auto;
+                padding: 20px;
+            }
+                
+            /* IMAGE WRAPPER */
+            .image-box {
+                width: 300px;
+                height: 150px;
+                background: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+    
+            .image-box img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+    
+            /* BUTTONS */
+            .sound-btn {
+                background-color: rgba(51, 133, 51, 0.8);
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                width: 200px;
+                padding: 8px 0;
+                cursor: pointer;
+                border: none;
+                border-radius: 6px;
+                transition: transform 0.2s ease;
+                justify-self: center;
+            }
+    
+            .sound-btn:hover {
+                transform: scale(1.1);
+            }
+
             :root{--bg:white;--card:#fff;--accent:rgb(83, 113, 83);--success:#16a34a;--danger:#ef4444}
             body{font-family:system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#0f172a}
             .wrap{max-width:2000px;margin:none;padding:20px}
