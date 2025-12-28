@@ -187,8 +187,9 @@
                 
             /* IMAGE WRAPPER */
             .image-box {
-                width: 300px;
-                height: 150px;
+                width: 100%;
+                max-width: 160px;   /* vừa 1 cột mobile */
+                aspect-ratio: 4 / 3;
                 background: white;
                 display: flex;
                 justify-content: center;
@@ -207,8 +208,10 @@
                 background-color: rgba(51, 133, 51, 0.8);
                 color: white;
                 font-weight: bold;
-                font-size: 16px;
-                width: 200px;
+                max-width: 160px;
+                font-size: 14px;
+                padding: 8px 0;
+                width: 100%;
                 padding: 8px 0;
                 cursor: pointer;
                 border: none;
@@ -968,6 +971,7 @@
   </div>
 </footer>
 </html>
+
 
 
 
