@@ -106,6 +106,7 @@
             top: 0;
             z-index: 1000;
             }
+            
             .TV2{
             color:rgb(41, 53, 28);
             text-align-last: center;
@@ -177,12 +178,15 @@
 
             .vocab-grid {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2, minmax(0, 1fr));
                 grid-auto-rows: auto;
-                gap: 2px 5px;
+                gap: 8px;
                 justify-content: center;
                 margin: 40px auto;
-                padding: 20px;
+                padding: 12px;
+            }
+            .vocab-grid > div {
+                margin-bottom: 4px;
             }
                 
             /* IMAGE WRAPPER */
@@ -331,6 +335,17 @@
 
             button{flex:1;padding:12px;border-radius:10px;border:0;background:var(--accent);color:white;font-size:1rem;cursor:pointer;}
 
+            @media (max-width: 480px) {
+            .image-box {
+                max-width: 140px;
+            }
+        
+            .sound-btn {
+                max-width: 140px;
+                font-size: 13px;
+                }
+            }
+
             .site-footer{
             display:grid;
             grid-template-columns: repeat(3, 1fr);
@@ -420,9 +435,6 @@
                 <button class="sound-btn" onclick="playSound('tim')">Tim</button>
                 <audio id="tim" src="Auff2/02Tim.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 2 -->
                 <div class="image-box"><img src="Flashcards/IM03.png" alt="Billy"></div>
                 <div class="image-box"><img src="Flashcards/IM04.png" alt="MrsJones"></div>
@@ -432,9 +444,6 @@
 
                 <button class="sound-btn" onclick="playSound('mrsjones')">Mrs. Jones</button>
                 <audio id="mrsjones" src="Auff2/04MsJones.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
 
                 <!-- 3 -->
                 <div class="image-box"><img src="Flashcards/IM05.png" alt="orange"></div>
@@ -446,9 +455,6 @@
                 <button class="sound-btn" onclick="playSound('pink')">pink</button>
                 <audio id="pink" src="Auff2/06Pink.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-                
                 <!-- 4 -->
                 <div class="image-box"><img src="Flashcards/IM07.png" alt="brown"></div>
                 <div class="image-box"><img src="Flashcards/IM08.png" alt="purple"></div>
@@ -459,9 +465,6 @@
                 <button class="sound-btn" onclick="playSound('purple')">purple</button>
                 <audio id="purple" src="Auff2/08Purple.mp3"></audio>
                 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 5 -->
                 <div class="image-box"><img src="Flashcards/IM09.png" alt="mom"></div>
                 <div class="image-box"><img src="Flashcards/IM10.png" alt="dad"></div>
@@ -471,9 +474,6 @@
                 
                 <button class="sound-btn" onclick="playSound('dad')">dad</button>
                 <audio id="dad" src="Auff2/10Dad.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
 
                 <!-- 6 -->
                 <div class="image-box"><img src="Flashcards/IM11.png" alt="brother"></div>
@@ -485,9 +485,6 @@
                 <button class="sound-btn" onclick="playSound('sister')">sister</button>
                 <audio id="sister" src="Auff2/12Sister.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 7 -->
                 <div class="image-box"><img src="Flashcards/IM13.png" alt="grandpa"></div>
                 <div class="image-box"><img src="Flashcards/IM14.png" alt="grandma"></div>
@@ -497,9 +494,6 @@
                 
                 <button class="sound-btn" onclick="playSound('grandma')">grandma</button>
                 <audio id="grandma" src="Auff2/14Grandma.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
                 
                 <!-- 8 -->
                 <div class="image-box"><img src="Flashcards/IM15.png" alt="happy"></div>
@@ -511,9 +505,6 @@
                 <button class="sound-btn" onclick="playSound('sad')">sad</button>
                 <audio id="sad" src="Auff2/16Sad.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 9 -->
                 <div class="image-box"><img src="Flashcards/IM17.png" alt="hungry"></div>
                 <div class="image-box"><img src="Flashcards/IM18.png" alt="thirsty"></div>
@@ -523,9 +514,6 @@
                 
                 <button class="sound-btn" onclick="playSound('thirsty')">thirsty</button>
                 <audio id="thirsty" src="Auff2/18Thirsty.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
                 
                 <!-- 10 -->
                 <div class="image-box"><img src="Flashcards/IM19.png" alt="hot"></div>
@@ -537,9 +525,6 @@
                 <button class="sound-btn" onclick="playSound('cold')">cold</button>
                 <audio id="cold" src="Auff2/20Cold.mp3"></audio>
                 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 11 -->
                 <div class="image-box"><img src="Flashcards/IM21.png" alt="dress"></div>
                 <div class="image-box"><img src="Flashcards/IM22.png" alt="socks"></div>
@@ -549,9 +534,6 @@
                 
                 <button class="sound-btn" onclick="playSound('socks')">socks</button>
                 <audio id="socks" src="Auff2/22Socks.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
                 
                 <!-- 12 -->
                 <div class="image-box"><img src="Flashcards/IM23.png" alt="tshirt"></div>
@@ -563,9 +545,6 @@
                 <button class="sound-btn" onclick="playSound('pants')">pants</button>
                 <audio id="pants" src="Auff2/24Pants.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 13 -->
                 <div class="image-box"><img src="Flashcards/IM25.png" alt="shorts"></div>
                 <div class="image-box"><img src="Flashcards/IM26.png" alt="shoes"></div>
@@ -575,9 +554,6 @@
                 
                 <button class="sound-btn" onclick="playSound('shoes')">shoes</button>
                 <audio id="shoes" src="Auff2/26Shoes.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
                 
                 <!-- 14 -->
                 <div class="image-box"><img src="Flashcards/IM27.png" alt="plus"></div>
@@ -589,9 +565,6 @@
                 <button class="sound-btn" onclick="playSound('equals')">equals</button>
                 <audio id="equals" src="Auff2/28Equals.mp3"></audio>
                 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 15 -->
                 <div class="image-box"><img src="Flashcards/IM29.png" alt="additionproblem"></div>
                 <div class="image-box"><img src="Flashcards/IM30.png" alt="bus"></div>
@@ -601,9 +574,6 @@
                 
                 <button class="sound-btn" onclick="playSound('bus')">bus</button>
                 <audio id="bus" src="Auff2/30Bus.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
 
                 <!-- 16 -->                
                 <div class="image-box"><img src="Flashcards/IM31.png" alt="bike"></div>
@@ -615,9 +585,6 @@
                 <button class="sound-btn" onclick="playSound('boat')">boat</button>
                 <audio id="boat" src="Auff2/32Boat.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 17 -->
                 <div class="image-box"><img src="Flashcards/IM33.png" alt="car"></div>
                 <div class="image-box"><img src="Flashcards/IM34.png" alt="truck"></div>
@@ -627,9 +594,6 @@
                 
                 <button class="sound-btn" onclick="playSound('truck')">truck</button>
                 <audio id="truck" src="Auff2/34Truck.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
 
                 <!-- 18 -->
                 <div class="image-box"><img src="Flashcards/IM35.png" alt="motorbike"></div>
@@ -641,9 +605,6 @@
                 <button class="sound-btn" onclick="playSound('seesaw')">seesaw</button>
                 <audio id="seesaw" src="Auff2/36Seesaw.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 19 -->
                 <div class="image-box"><img src="Flashcards/IM37.png" alt="slide"></div>
                 <div class="image-box"><img src="Flashcards/IM38.png" alt="goal"></div>
@@ -653,9 +614,6 @@
 
                 <button class="sound-btn" onclick="playSound('goal')">goal</button>
                 <audio id="goal" src="Auff2/38Goal.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
 
                 <!-- 20 -->
                 <div class="image-box"><img src="Flashcards/IM39.png" alt="tree"></div>
@@ -667,9 +625,6 @@
                 <button class="sound-btn" onclick="playSound('pool')">pool</button>
                 <audio id="pool" src="Auff2/40Pool.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 21 -->
                 <div class="image-box"><img src="Flashcards/IM41.png" alt="frisbee"></div>
                 <div class="image-box"><img src="Flashcards/IM42.png" alt="kitchen"></div>
@@ -680,9 +635,6 @@
                 <button class="sound-btn" onclick="playSound('kitchen')">kitchen</button>
                 <audio id="kitchen" src="Auff2/42Kitchen.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 22 -->
                 <div class="image-box"><img src="Flashcards/IM43.png" alt="livingroom"></div>
                 <div class="image-box"><img src="Flashcards/IM44.png" alt="diningroom"></div>             
@@ -692,10 +644,7 @@
 
                 <button class="sound-btn" onclick="playSound('diningroom')">dining room</button>
                 <audio id="diningroom" src="Auff2/44Diningroom.mp3"></audio>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
+              
                 <!-- 23 -->
                 <div class="image-box"><img src="Flashcards/IM45.png" alt="bedroom"></div>
                 <div class="image-box"><img src="Flashcards/IM46.png" alt="bathroom"></div>
@@ -706,9 +655,6 @@
                 <button class="sound-btn" onclick="playSound('bathroom')">bathroom</button>
                 <audio id="bathroom" src="Auff2/46Bathroom.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-                
                 <!-- 24 -->
                 <div class="image-box"><img src="Flashcards/IM47.png" alt="computer"></div>
                 <div class="image-box"><img src="Flashcards/IM48.png" alt="tv"></div>
@@ -718,9 +664,6 @@
 
                 <button class="sound-btn" onclick="playSound('tv')">TV</button>
                 <audio id="tv" src="Auff2/48TV.mp3"></audio>
-
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
 
                 <!-- 25 -->
                 <div class="image-box"><img src="Flashcards/IM49.png" alt="phone"></div>
@@ -732,9 +675,6 @@
                 <button class="sound-btn" onclick="playSound('camera')">camera</button>
                 <audio id="camera" src="Auff2/50Camera.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 26 -->
                 <div class="image-box"><img src="Flashcards/IM51.png" alt="vietnam"></div>
                 <div class="image-box"><img src="Flashcards/IM52.png" alt="korea"></div>             
@@ -744,10 +684,7 @@
 
                 <button class="sound-btn" onclick="playSound('korea')">Korea</button>
                 <audio id="korea" src="Auff2/52Korea.mp3"></audio>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
+            
                 <!-- 27 -->
                 <div class="image-box"><img src="Flashcards/IM53.png" alt="theusa"></div>
                 <div class="image-box"><img src="Flashcards/IM54.png" alt="thailand"></div>
@@ -758,9 +695,6 @@
                 <button class="sound-btn" onclick="playSound('thailand')">Thailand</button>
                 <audio id="thailand" src="Auff2/54Thailand.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 28 -->                
                 <div class="image-box"><img src="Flashcards/IM55.png" alt="switzerland"></div>
                 <div class="image-box"><img src="Flashcards/IM56.png" alt="dog"></div>             
@@ -770,10 +704,7 @@
 
                 <button class="sound-btn" onclick="playSound('dog')">dog</button>
                 <audio id="dog" src="Auff2/56Dog.mp3"></audio>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-                
+             
                 <!-- 29 -->
                 <div class="image-box"><img src="Flashcards/IM57.png" alt="cat"></div>
                 <div class="image-box"><img src="Flashcards/IM58.png" alt="hamster"></div>
@@ -784,9 +715,6 @@
                 <button class="sound-btn" onclick="playSound('hamster')">hamster</button>
                 <audio id="hamster" src="Auff2/58Hamster.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 30 -->
                 <div class="image-box"><img src="Flashcards/IM59.png" alt="fish"></div>
                 <div class="image-box"><img src="Flashcards/IM60.png" alt="card"></div>
@@ -796,10 +724,7 @@
 
                 <button class="sound-btn" onclick="playSound('card')">card</button>
                 <audio id="card" src="Auff2/60Card.mp3"></audio>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
+             
                 <!-- 31 -->
                 <div class="image-box"><img src="Flashcards/IM61.png" alt="banhchung"></div>
                 <div class="image-box"><img src="Flashcards/IM62.png" alt="luckymoney"></div>
@@ -810,9 +735,6 @@
                 <button class="sound-btn" onclick="playSound('luckymoney')">Lucky money</button>
                 <audio id="luckymoney" src="Auff2/62Luckymoney.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 32 -->
                 <div class="image-box"><img src="Flashcards/IM63.png" alt="flowers"></div>
                 <div class="image-box"><img src="Flashcards/IM64.png" alt="baseball"></div>                
@@ -822,10 +744,7 @@
 
                 <button class="sound-btn" onclick="playSound('baseball')">baseball</button>
                 <audio id="baseball" src="Auff2/64Baseball.mp3"></audio>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
+       
                 <!-- 33 -->
                 <div class="image-box"><img src="Flashcards/IM65.png" alt="basketball"></div>
                 <div class="image-box"><img src="Flashcards/IM66.png" alt="hockey"></div>
@@ -836,9 +755,6 @@
                 <button class="sound-btn" onclick="playSound('hockey')">hockey</button>
                 <audio id="hockey" src="Auff2/66Hockey.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 34 -->
                 <div class="image-box"><img src="Flashcards/IM67.png" alt="badminton"></div>
                 <div class="image-box"><img src="Flashcards/IM68.png" alt="tohe"></div>
@@ -847,10 +763,7 @@
                 <audio id="badminton" src="Auff2/67Badminton.mp3"></audio>
 
                 <button class="sound-btn">To he</button>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
+            
                 <!-- 35 -->
                 <div class="image-box"><img src="Flashcards/IM69.png" alt="kite"></div>
                 <div class="image-box"><img src="Flashcards/IM70.png" alt="boardgame"></div>
@@ -861,9 +774,6 @@
                 <button class="sound-btn" onclick="playSound('boardgame')">board game</button>
                 <audio id="boardgame" src="Auff2/70Boardgame.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 36 -->
                 <div class="image-box"><img src="Flashcards/IM71.png" alt="doll"></div>
                 <div class="image-box"><img src="Flashcards/IM72.png" alt="mountains"></div>
@@ -873,10 +783,7 @@
 
                 <button class="sound-btn" onclick="playSound('mountains')">mountains</button>
                 <audio id="mountains" src="Auff2/72Mountains.mp3"></audio>
-                
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
+             
                 <!-- 37 -->
                 <div class="image-box"><img src="Flashcards/IM73.png" alt="jacket"></div>
                 <div class="image-box"><img src="Flashcards/IM74.png" alt="boots"></div>
@@ -887,9 +794,6 @@
                 <button class="sound-btn" onclick="playSound('boots')">boots</button>
                 <audio id="boots" src="Auff2/74Boots.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-                
                 <!-- 38 -->
                 <div class="image-box"><img src="Flashcards/IM75.png" alt="backpack"></div>
                 <div class="image-box"><img src="Flashcards/IM76.png" alt="soup"></div>
@@ -900,9 +804,6 @@
                 <button class="sound-btn" onclick="playSound('egg')">egg</button>
                 <audio id="egg" src="Auff2/76Egg.mp3"></audio>
 
-                <div style="height: 20px;"></div>
-                <div style="height: 20px;"></div>
-
                 <!-- 39 -->
                 <div class="image-box"><img src="Flashcards/IM77.png" alt="rice"></div>
                 <div class="image-box"><img src="Flashcards/IM78.png" alt="soup"></div>
@@ -912,8 +813,6 @@
                 
                 <button class="sound-btn" onclick="playSound('soup')">soup</button>
                 <audio id="soup" src="Auff2/78Soup.mp3"></audio>
-
-                <div style="height: 20px;"></div>
 
                 <!-- 40 -->
                 <div class="image-box"><img src="Flashcards/IM79.png" alt="meat"></div>
@@ -971,6 +870,7 @@
   </div>
 </footer>
 </html>
+
 
 
 
